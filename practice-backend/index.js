@@ -4,6 +4,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.set("view engine", "ejs")
+app.use(express.static('./public'))
 
 app.use(function(req, res, next){
     console.log('hello form middleware');
@@ -15,9 +16,12 @@ app.use(function(req, res, next){
 })
 
 app.get('/contact' , (req, res)=>{
-    res.render('aboutUs')
+    res.render('aboutUs', {name:"Naim Sheikh"})
 })
 
+app.get('/', (req, res)=>{
+    res.render('index')
+})
 
 //to make any route dynamic we use (:) at the place where you want to make it dynamic and to access the value use req.params 
 
