@@ -22,7 +22,7 @@ function App() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, email }) 
+      body: JSON.stringify({ name, email })  
     })
     .then(res => res.json())
     .then(data => {
