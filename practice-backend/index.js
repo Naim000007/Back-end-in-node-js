@@ -3,6 +3,8 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
+app.set("view engine", "ejs")
+
 app.use(function(req, res, next){
     console.log('hello form middleware');
     next();
@@ -12,8 +14,8 @@ app.use(function(req, res, next){
     next();
 })
 
-app.get('/' , (req, res)=>{
-    res.send('hi my name is naim islam ')
+app.get('/contact' , (req, res)=>{
+    res.render('aboutUs')
 })
 
 
