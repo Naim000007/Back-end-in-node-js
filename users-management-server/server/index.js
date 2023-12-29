@@ -2,8 +2,14 @@ import express from "express"
 import cors from 'cors'
 const app= express();
 
+
 const port = process.env.PORT || 5000;
+
+//middleware
 app.use(cors())
+app.use(express.json())
+
+
 const dataArray = [
     { id: 1, name: "Naim", address: "Dhaka, Bangladesh", email: "naim@gmail.com" },
     { id: 2, name: "Mim", address: "New York, USA", email: "mim@gmail.com" },
@@ -24,6 +30,15 @@ app.get('/', (req, res)=>{
 
 app.get('/user', (req, res)=>{
     res.send(dataArray)
+})
+app.post('/user', (req, res)=>{
+    console.log(`post api hitting`);
+    console.log(req.body);
+    const newUser = req.body;
+    // const newUser.id =  dataArray.length+1;
+    newUser.id = dataArray.length + 1;
+    dataArray.push(newUser);
+    res.send(newUser)
 })
 
 app.listen(port , ()=>{
